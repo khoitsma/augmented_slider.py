@@ -45,6 +45,11 @@ class AugmentedSliderWithLabel(ui.View):
                     group = 'slider')
         '''
 
+
+# Credit: mikaelho / pythonista – gestures
+# Credit: tdamdouni / Pythonista
+# Credit: Pythonista / slider / SliderWithLabel_danrcook.py
+
     
     def __init__(self, **kwargs):
         self.slider = ui.Slider()
