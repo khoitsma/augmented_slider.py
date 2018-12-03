@@ -115,7 +115,8 @@ class AugmentedSliderWithLabel(ui.View):
             self.label.x = self.width - self.label.width
         if self.label.x < 0:
             self.label.x = 0
-        self.second_action(self.name, self.label.text)
+        if self.second_action:
+        	self.second_action(self.name, self.label.text)
 
         
     def draw(self):
