@@ -1,3 +1,8 @@
+# credit: mikaelho / pythonista – gestures
+# credit: tdamdouni / Pythonista
+# credit: Pythonista / slider / SliderWithLabel_danrcook.py
+
+
 class AugmentedSliderWithLabel(ui.View):
     '''wrapper for ui.Slider to also show a label. You can edit the value of the slider directly in the label since it is a textfield. Can take the following keyword arguments:
         - for the slider:
@@ -44,11 +49,6 @@ class AugmentedSliderWithLabel(ui.View):
                     round = 5,
                     group = 'slider')
         '''
-
-
-# Credit: mikaelho / pythonista – gestures
-# Credit: tdamdouni / Pythonista
-# Credit: Pythonista / slider / SliderWithLabel_danrcook.py
 
     
     def __init__(self, **kwargs):
