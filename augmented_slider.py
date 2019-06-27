@@ -54,26 +54,22 @@ class AugmentedSliderWithLabel(ui.View):
     def __init__(self, **kwargs):
         self.slider = ui.Slider()
         
-        #defaults
-        self.min_val = 0
-        self.max_val = 10
-        
-        self.s_type = kwargs['s_type'] if 's_type' in kwargs else 'int'
-        self.name = kwargs['name'] if 'name' in kwargs else 'unnamed'        
-        self.group = kwargs['group'] if 'group' in kwargs else 'ungrouped'        
-        self.second_action = kwargs['second_action'] if 'second_action' in kwargs else None       
-        self.round = kwargs['round'] if 'round' in kwargs else 1
-        self.frame = kwargs['frame'] if 'frame' in kwargs else (0,0,100,60)
-        
-        self.max_val = kwargs['max_val'] if 'max_val' in kwargs else self.max_val
-        self.min_val = kwargs['min_val'] if 'min_val' in kwargs else self.min_val
+        self.s_type = kwargs.get('s_type', 'int')
+        self.name = kwargs.get('name', 'unnamed')        
+        self.group = kwargs.get('group', 'ungrouped')        
+        self.second_action = kwargs.get('second_action', None)       
+        self.round = kwargs.get('round', 1)
+        self.frame = kwargs.get('frame', (0,0,100,60))
+
+        self.max_val = kwargs.get('max_val', 10)
+        self.min_val = kwargs.get('min_val', 1)
         
         self.slider.value = (float(self.bool_to_str(kwargs['value']))-self.min_val)/(self.max_val-self.min_val) if 'value' in kwargs else 0.5*(self.max_val-self.min_val)
         
         self.value = round(self.slider.value*(self.max_val-self.min_val)+self.min_val) #for convenience in getting the value attribute
         
         self.slider.action = self.update_label_and_value
-        self.slider.tint_color = kwargs['tint_color'] if 'tint_color' in kwargs else 0.7
+        self.slider.tint_color = kwargs.get('tint_color', 0.7)
         self.label = ui.TextField()
         self.label.action = self.update_value
         self.label.bordered = True
@@ -113,8 +109,7 @@ class AugmentedSliderWithLabel(ui.View):
             self.label.text = str(self.value)
         if self.label.x + self.label.width > self.width:
             self.label.x = self.width - self.label.width
-        if self.label.x < 0:
-            self.label.x = 0
+        self.label.x = max(self.label.x, 0)
         if self.second_action:
         	self.second_action(self.name, self.label.text)
 
@@ -132,9 +127,4 @@ class AugmentedSliderWithLabel(ui.View):
     
     
     def bool_to_str(self, x):
-        if x.upper() == 'TRUE':
-            return '1'
-        elif x.upper() == 'FALSE':
-            return '0'
-        else:
-            return x
+        return {'TRUE': '1', 'FALSE': '0'}.get(x.upper(), x)
