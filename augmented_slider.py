@@ -58,6 +58,7 @@ class AugmentedSliderWithLabel(ui.View):
         self.min_val = 0
         self.max_val = 10
         
+        # improved these next 6 lines as suggested (3 years back) by 'ccc/cclauss' -- thank you ccc
         self.s_type = kwargs.get('s_type', 'int')
         self.name = kwargs.get('name', 'unnamed')
         self.group = kwargs.get('group', 'ungrouped')
@@ -65,6 +66,7 @@ class AugmentedSliderWithLabel(ui.View):
         self.round = kwargs.get('round', 1)
         self.frame = kwargs.get('frame', (0,0,100,60))
 
+        # improved these next 2 lines as suggested (3 years back) by 'ccc/cclauss' -- thank you ccc
         self.max_val = kwargs.get('max_val', self.max_val)
         self.min_val = kwargs.get('min_val', self.min_val)
 
@@ -73,6 +75,8 @@ class AugmentedSliderWithLabel(ui.View):
         self.value = round(self.slider.value*(self.max_val-self.min_val)+self.min_val) #for convenience in getting the value attribute
 
         self.slider.action = self.update_label_and_value
+        
+        # improved this next line as suggested (3 years back) by 'ccc/cclauss' -- thank you ccc 
         self.slider.tint_color = kwargs.get('tint_color', 0.7)
 
         self.label = ui.TextField()
