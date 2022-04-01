@@ -63,6 +63,7 @@ class AugmentedSliderWithLabel(ui.View):
         self.name = kwargs.get('name', 'unnamed')
         self.group = kwargs.get('group', 'ungrouped')
         self.second_action = kwargs.get('second_action', None)
+        self.choices = kwargs.get('choices', None)
         self.round = kwargs.get('round', 1)
         self.frame = kwargs.get('frame', (0,0,100,60))
 
