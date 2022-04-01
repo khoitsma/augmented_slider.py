@@ -58,7 +58,7 @@ class AugmentedSliderWithLabel(ui.View):
         self.min_val = 0
         self.max_val = 10
         
-        # improved these next 6 lines as suggested (3 years back) by 'ccc/cclauss' -- thank you ccc
+        # improved these next 7 lines as suggested (3 years back) by 'ccc/cclauss' -- thank you ccc
         self.s_type = kwargs.get('s_type', 'int')
         self.name = kwargs.get('name', 'unnamed')
         self.group = kwargs.get('group', 'ungrouped')
